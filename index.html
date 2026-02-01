@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>寇斯豪 | Sihao Kou - 个人主页</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .main-card {
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            padding: 30px 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .header-text {
+            text-align: left;
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .header-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: flex-end;
+        }
+
+        .email-display {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .email-display:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+        }
+
+        .email-display i {
+            font-size: 1em;
+        }
+
+        .email-display a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: bottom;
+            opacity: 0.3;
+        }
+
+        .profile-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            object-fit: cover;
+        }
+
+        .header h1 {
+            font-size: 1.8em;
+            margin-bottom: 5px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .header h2 {
+            font-size: 0.9em;
+            font-weight: 400;
+            opacity: 0.95;
+            margin-bottom: 15px;
+        }
+
+        .header-links {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .nav {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            font-size: 0.9em;
+        }
+
+        .nav a:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            text-decoration: none;
+            color: #fff;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .social-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-links i {
+            font-size: 1em;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            color: #667eea;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            color: #764ba2;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: #764ba2;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 18px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        .info-card h3 {
+            color: #667eea;
+            margin-bottom: 8px;
+            font-size: 1em;
+        }
+
+        .info-card p {
+            color: #555;
+            font-size: 0.85em;
+            line-height: 1.4;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            letter-spacing: 0.5px;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .tech-category {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .tech-category:hover {
+            border-color: #667eea;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.15);
+        }
+
+        .tech-category h4 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tech-category ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tech-category li {
+            padding: 8px 0;
+            padding-left: 20px;
+            position: relative;
+            color: #555;
+            font-size: 0.95em;
+        }
+
+        .tech-category li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #764ba2;
+            font-weight: bold;
+        }
+
+        .project-card {
+            background: #fff;
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .project-card h4 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .project-card p {
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        .project-card .highlight {
+            color: #764ba2;
+            font-weight: 600;
+        }
+
+        .blog-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .blog-list li {
+            padding: 15px;
+            margin-bottom: 10px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 3px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .blog-list li:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .blog-list li strong {
+            color: #667eea;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .blog-category {
+            color: #764ba2;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .strengths {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .strength-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .strength-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .strength-item i {
+            font-size: 2em;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        .strength-item h4 {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .strength-item p {
+            font-size: 0.9em;
+            opacity: 0.95;
+            line-height: 1.5;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #fff;
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 30px 20px;
+            }
+
+            .header-content {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .header-text {
+                text-align: center;
+            }
+
+            .header-contact {
+                align-items: center;
+                width: 100%;
+            }
+
+            .header h1 {
+                font-size: 1.6em;
+            }
+
+            .header h2 {
+                font-size: 0.85em;
+            }
+
+            .nav {
+                gap: 10px;
+                justify-content: center;
+            }
+
+            .nav a {
+                padding: 6px 12px;
+                font-size: 0.85em;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .section-title {
+                font-size: 1.5em;
+            }
+
+            .info-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .info-card {
+                padding: 15px;
+            }
+
+            .info-card h3 {
+                font-size: 0.95em;
+            }
+
+            .info-card p {
+                font-size: 0.8em;
+            }
+
+            table {
+                font-size: 0.9em;
+            }
+
+            th, td {
+                padding: 10px;
+            }
+        }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .scroll-top i {
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main-card">
+            <div class="header">
+                <div class="header-content">
+                    <img src="image/myphoto.jpeg" alt="Sihao Kou" class="profile-photo">
+                    <div class="header-text">
+                        <h1>寇斯豪 | Sihao Kou</h1>
+                        <h2>北京大学人工智能硕士在读、计算机科学与技术工学学士</h2>
+                        <nav class="nav">
+                            <a href="#home">首页</a>
+                            <a href="#research">研究</a>
+                            <a href="#publications">论文</a>
+                            <a href="#blog">技术博客</a>
+                        </nav>
+                    </div>
+                    <div class="header-contact">
+                        <div class="email-display">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:sihaokou@163.com">sihaokou@163.com</a>
+                        </div>
+                        <div class="social-links">
+                            <a href="https://github.com/kousihao" target="_blank">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://www.researchgate.net/topic/Engineering" target="_blank">
+                                <i class="fas fa-flask"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content">
+                <section id="research" class="section">
+                    <h2 class="section-title"><i class="fas fa-search"></i> 研究方向 / Research Interests</h2>
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <h3><i class="fas fa-chart-line"></i> 金融科技（FinTech）</h3>
+                            <p>人工智能在金融风控、智能数据分析中的场景化应用</p>
+                        </div>
+                        <div class="info-card">
+                            <h3><i class="fas fa-brain"></i> 人工智能</h3>
+                            <p>人脸识别算法优化、计算机视觉技术落地与多场景适配</p>
+                        </div>
+                        <div class="info-card">
+                            <h3><i class="fas fa-link"></i> 区块链技术</h3>
+                            <p>链上交易解析、智能合约开发、海量区块链数据存储与分布式计算</p>
+                        </div>
+                        <div class="info-card">
+                            <h3><i class="fas fa-building"></i> 企业级技术</h3>
+                            <p>大数据存储与管理、网络安全防护体系、跨平台系统研发</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="home" class="section">
+                    <h2 class="section-title"><i class="fas fa-graduation-cap"></i> 教育背景 / Education</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>时间</th>
+                                <th>院校</th>
+                                <th>专业</th>
+                                <th>学历/备注</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2025-至今</td>
+                                <td>北京大学</td>
+                                <td>人工智能（金融科技方向）</td>
+                                <td>研究生在读，聚焦AI与区块链在金融领域的融合研究</td>
+                            </tr>
+                            <tr>
+                                <td>本科阶段</td>
+                                <td>河北大学</td>
+                                <td>计算机科学与技术</td>
+                                <td>工学学士，入选中关村软件园人才基地项目，深耕企业级软件开发实践</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title"><i class="fas fa-briefcase"></i> 职业经历 / Professional Experience</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>时间</th>
+                                <th>单位</th>
+                                <th>职位</th>
+                                <th>核心工作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2025-至今</td>
+                                <td>外资金融公司</td>
+                                <td>国际金融技术研发岗</td>
+                                <td>主导国际金融场景下AI与区块链技术融合研发，推动金融科技跨区域落地与合规适配</td>
+                            </tr>
+                            <tr>
+                                <td>2021-2025</td>
+                                <td>京东集团（京东金融）</td>
+                                <td>资深技术专家</td>
+                                <td>负责大数据与AI在金融风控、智能决策场景的应用落地，搭建千万级数据处理体系</td>
+                            </tr>
+                            <tr>
+                                <td>2017-至今</td>
+                                <td>北京豪纳睿斯科技有限公司</td>
+                                <td>创始人/执行董事</td>
+                                <td>主导企业技术研发战略，牵头10项软件著作权全流程研发，实现技术成果商业化转化</td>
+                            </tr>
+                            <tr>
+                                <td>2015-2017</td>
+                                <td>北京联拓金融信息科技有限公司</td>
+                                <td>软件工程师</td>
+                                <td>参与金融核心系统开发与维护，夯实金融场景化技术应用与问题排查能力</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section id="publications" class="section">
+                    <h2 class="section-title"><i class="fas fa-file-alt"></i> 论文成果 / Publications</h2>
+                    
+                    <h3>一、期刊论文</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>发表时间</th>
+                                <th>论文标题</th>
+                                <th>发表期刊</th>
+                                <th>角色/备注</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>待补充</td>
+                                <td>《AI与区块链融合在金融风控中的应用研究》</td>
+                                <td>待补充（如《计算机工程与应用》《金融科技时代》）</td>
+                                <td>第一作者，研究中</td>
+                            </tr>
+                            <tr>
+                                <td>待补充</td>
+                                <td>《人脸识别算法在安防场景的优化与落地》</td>
+                                <td>待补充（如《计算机应用研究》）</td>
+                                <td>参与作者，核心算法贡献</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>二、会议论文/学术会议</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>会议时间</th>
+                                <th>论文标题</th>
+                                <th>会议名称</th>
+                                <th>角色/备注</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>待补充</td>
+                                <td>《分布式存储在海量区块链数据中的实践》</td>
+                                <td>待补充（如全国金融科技学术会议）</td>
+                                <td>第一作者，口头报告</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title"><i class="fas fa-cogs"></i> 核心技术成果 / Core Technical Achievements</h2>
+                    
+                    <h3>一、软件著作权（主导研发，全量罗列）</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>软件名称</th>
+                                <th>登记号</th>
+                                <th>技术领域</th>
+                                <th>应用场景</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>豪纳睿斯基于人工智能的人脸识别系统</td>
+                                <td>2021SR0141535</td>
+                                <td>计算机视觉/安防</td>
+                                <td>多场景身份验证、智能安防监控</td>
+                            </tr>
+                            <tr>
+                                <td>豪纳睿斯智能数据分析系统</td>
+                                <td>2021SR0141456</td>
+                                <td>大数据/企业决策</td>
+                                <td>多维度数据处理、可视化分析与决策支撑</td>
+                            </tr>
+                            <tr>
+                                <td>豪纳睿斯网络安全防护系统</td>
+                                <td>2021SR0141529</td>
+                                <td>网络安全/数据保护</td>
+                                <td>企业级防火墙、数据加密与入侵检测</td>
+                            </tr>
+                            <tr>
+                                <td>豪纳睿斯客户关系管理系统</td>
+                                <td>2021SR0141487</td>
+                                <td>企业信息化</td>
+                                <td>客户全生命周期管理与运营优化</td>
+                            </tr>
+                            <tr>
+                                <td>豪纳睿斯供应链协同管理平台</td>
+                                <td>2021SR0141502</td>
+                                <td>供应链技术</td>
+                                <td>上下游信息共享与库存协同优化</td>
+                            </tr>
+                            <tr>
+                                <td>豪纳睿斯企业资源规划系统</td>
+                                <td>2021SR0141518</td>
+                                <td>企业信息化</td>
+                                <td>全业务流程一体化资源管控</td>
+                            </tr>
+                            <tr>
+                                <td>豪纳睿斯智能办公自动化系统</td>
+                                <td>2021SR0141523</td>
+                                <td>办公信息化</td>
+                                <td>数字化公文流转与协同办公</td>
+                            </tr>
+                            <tr>
+                                <td>豪纳睿斯移动应用开发平台</td>
+                                <td>2021SR0141531</td>
+                                <td>跨平台开发</td>
+                                <td>高效移动应用快速研发与适配</td>
+                            </tr>
+                            <tr>
+                                <td>豪纳睿斯大数据存储与管理系统</td>
+                                <td>2021SR0141533</td>
+                                <td>大数据</td>
+                                <td>海量数据分布式存储与高并发访问</td>
+                            </tr>
+                            <tr>
+                                <td>豪纳睿斯网上商城运营系统</td>
+                                <td>2021SR0141403</td>
+                                <td>电商技术</td>
+                                <td>全流程电商运营数字化支撑</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>二、技术栈细分 / Tech Stack (By Domain)</h3>
+                    <div class="tech-stack">
+                        <div class="tech-category">
+                            <h4><i class="fas fa-code"></i> 核心开发技术</h4>
+                            <ul>
+                                <li>编程语言：Python（机器学习/数据分析）、Java（企业级后端）、Solidity（智能合约）</li>
+                                <li>开发框架：SpringBoot、Django、Flask、React Native（跨平台）</li>
+                                <li>数据库与存储：MySQL、MongoDB、Hadoop（分布式存储）、Redis（缓存）</li>
+                            </ul>
+                        </div>
+                        <div class="tech-category">
+                            <h4><i class="fas fa-brain"></i> 人工智能与算法</h4>
+                            <ul>
+                                <li>计算机视觉：人脸识别算法、图像预处理、目标检测</li>
+                                <li>机器学习：分类/聚类算法、模型优化、特征工程</li>
+                                <li>工程化：模型部署、算法性能调优、多场景适配</li>
+                            </ul>
+                        </div>
+                        <div class="tech-category">
+                            <h4><i class="fas fa-chart-bar"></i> 金融科技与区块链</h4>
+                            <ul>
+                                <li>金融技术：金融风控模型搭建、交易系统开发、合规适配</li>
+                                <li>区块链：以太坊/联盟链开发、链上数据解析、智能合约审计</li>
+                                <li>大数据处理：千万级数据采集、清洗、可视化与分布式计算</li>
+                            </ul>
+                        </div>
+                        <div class="tech-category">
+                            <h4><i class="fas fa-shield-alt"></i> 安全与运维</h4>
+                            <ul>
+                                <li>网络安全：防火墙配置、入侵检测、数据加密技术</li>
+                                <li>运维支撑：系统部署、性能监控、故障排查与优化</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title"><i class="fas fa-project-diagram"></i> 代表性项目 / Representative Projects</h2>
+                    
+                    <div class="project-card">
+                        <h4>1. 金融科技智能分析平台（京东金融）</h4>
+                        <p><span class="highlight">核心职责：</span>牵头技术研发与落地，搭建多维度数据处理体系</p>
+                        <p><span class="highlight">技术亮点：</span>融合Python数据分析与Java后端架构，支撑千万级数据量实时处理</p>
+                        <p><span class="highlight">项目成果：</span>提升金融风控效率30%+，实现风险事件提前预警，覆盖核心业务场景</p>
+                    </div>
+
+                    <div class="project-card">
+                        <h4>2. 企业级供应链协同管理系统（自主研发）</h4>
+                        <p><span class="highlight">核心职责：</span>主导全流程研发、测试与商业化落地，定义技术架构</p>
+                        <p><span class="highlight">技术亮点：</span>整合ERP与大数据技术，实现上下游信息实时同步</p>
+                        <p><span class="highlight">项目成果：</span>优化企业库存周转效率25%，已服务多家中小企业数字化转型</p>
+                    </div>
+
+                    <div class="project-card">
+                        <h4>3. 区块链金融交易解析平台（外资金融公司）</h4>
+                        <p><span class="highlight">核心职责：</span>负责链上数据解析、智能合约开发与系统集成</p>
+                        <p><span class="highlight">技术亮点：</span>结合分布式计算与金融合规需求，实现链上数据可视化与风险监控</p>
+                        <p><span class="highlight">项目成果：</span>支撑国际金融跨链交易场景，提升交易透明度与合规性</p>
+                    </div>
+                </section>
+
+                <section id="blog" class="section">
+                    <h2 class="section-title"><i class="fas fa-blog"></i> 技术博客目录 / Technical Blog Directory</h2>
+                    <p style="margin-bottom: 20px; color: #666;">按技术领域分类，持续更新中</p>
+                    
+                    <div class="blog-category">一、人工智能与计算机视觉</div>
+                    <ul class="blog-list">
+                        <li><strong>《人脸识别算法优化实践：从精度提升到多场景适配》</strong></li>
+                        <li><strong>《Python机器学习模型部署指南：工程化落地关键步骤》</strong></li>
+                        <li><strong>《计算机视觉在安防场景中的技术难点与解决方案》</strong></li>
+                    </ul>
+
+                    <div class="blog-category">二、金融科技与区块链</div>
+                    <ul class="blog-list">
+                        <li><strong>《区块链智能合约开发：Solidity实战与安全审计要点》</strong></li>
+                        <li><strong>《金融风控中的AI模型应用：数据预处理与特征工程技巧》</strong></li>
+                        <li><strong>《海量区块链数据存储与计算：分布式架构设计思路》</strong></li>
+                    </ul>
+
+                    <div class="blog-category">三、企业级技术与大数据</div>
+                    <ul class="blog-list">
+                        <li><strong>《Hadoop分布式存储实战：企业级大数据平台搭建》</strong></li>
+                        <li><strong>《Java企业级后端开发：高并发系统优化策略》</strong></li>
+                        <li><strong>《跨平台移动应用开发：React Native性能调优经验》</strong></li>
+                    </ul>
+
+                    <div class="blog-category">四、技术研究与趋势</div>
+                    <ul class="blog-list">
+                        <li><strong>《AI与区块链融合在金融领域的应用前景与挑战》</strong></li>
+                        <li><strong>《企业数字化转型：技术选型与落地路径分析》</strong></li>
+                        <li><strong>《网络安全防护体系搭建：企业级解决方案总结》</strong></li>
+                    </ul>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title"><i class="fas fa-star"></i> 核心优势 / Core Strengths</h2>
+                    <div class="strengths">
+                        <div class="strength-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <h4>学术+实践双驱动</h4>
+                            <p>兼具北大金融科技方向学术研究能力与十余年企业级技术研发、管理经验，实现理论与落地结合</p>
+                        </div>
+                        <div class="strength-item">
+                            <i class="fas fa-layer-group"></i>
+                            <h4>全栈技术视野</h4>
+                            <p>覆盖AI、区块链、金融科技、大数据等多领域，可独立牵头复杂跨领域项目</p>
+                        </div>
+                        <div class="strength-item">
+                            <i class="fas fa-rocket"></i>
+                            <h4>技术转化能力</h4>
+                            <p>主导10项软件著作权从研发到商业化落地，具备完整技术成果转化闭环经验</p>
+                        </div>
+                        <div class="strength-item">
+                            <i class="fas fa-globe"></i>
+                            <h4>跨场景适配能力</h4>
+                            <p>深耕金融、企业服务、安防等场景，兼顾技术实现与业务需求，适配国际与国内业务场景</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>本页面持续更新 / This page is updated continuously</p>
+            <p>最后更新时间：2026年1月 / Last updated: January 2026</p>
+        </div>
+    </div>
+
+    <div class="scroll-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const scrollTop = document.querySelector('.scroll-top');
+            if (window.pageYOffset > 300) {
+                scrollTop.classList.add('visible');
+            } else {
+                scrollTop.classList.remove('visible');
+            }
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
